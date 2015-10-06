@@ -27,6 +27,7 @@
 		0476901C1BAC094D001F749E /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047690181BAC094D001F749E /* SignInViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		04A60EDE1BA73F9C0068715E /* DispensariesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A60EDD1BA73F9C0068715E /* DispensariesListViewController.swift */; };
 		04E42AF41BABEF22007C789E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E42AF31BABEF22007C789E /* MapViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		04FAEF471BC370C7005F7B1B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04FAEF461BC370C7005F7B1B /* Assets.xcassets */; settings = {ASSET_TAGS = (); }; };
 		2AF6AAD71BBA322A007183E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AF6AAD51BBA322A007183E1 /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
 		2AF6AAD91BBA4048007183E1 /* DispensariesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF6AAD81BBA4048007183E1 /* DispensariesViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		8204D48BE7EB168611952F5B /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49630389B6061F45C815E714 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -77,6 +78,7 @@
 		047690181BAC094D001F749E /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		04A60EDD1BA73F9C0068715E /* DispensariesListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispensariesListViewController.swift; sourceTree = "<group>"; };
 		04E42AF31BABEF22007C789E /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		04FAEF461BC370C7005F7B1B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../documents/lithubb_ios/Assets.xcassets; sourceTree = "<group>"; };
 		2AF6AAD61BBA322A007183E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2AF6AAD81BBA4048007183E1 /* DispensariesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispensariesViewController.swift; sourceTree = "<group>"; };
 		49630389B6061F45C815E714 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				041961771BBF2744004673CB /* Assets.xcassets */,
+				04FAEF461BC370C7005F7B1B /* Assets.xcassets */,
 				04061F5A1BBCAE7D0007FAFA /* CustomInfoWindow.xib */,
 				0455E29F1BA6CC3B00061792 /* LaunchScreen.storyboard */,
 				2AF6AAD51BBA322A007183E1 /* Main.storyboard */,
@@ -306,6 +309,7 @@
 				0455E2A11BA6CC3B00061792 /* LaunchScreen.storyboard in Resources */,
 				04061F5B1BBCAE7D0007FAFA /* CustomInfoWindow.xib in Resources */,
 				041961781BBF2744004673CB /* Assets.xcassets in Resources */,
+				04FAEF471BC370C7005F7B1B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
