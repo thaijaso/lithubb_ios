@@ -341,7 +341,7 @@
                             <constraint firstItem="dwa-lQ-G4E" firstAttribute="top" secondItem="L9W-HJ-Pe8" secondAttribute="bottom" constant="8" symbolic="YES" id="z0q-0q-kb9"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Orders" id="vdA-p7-OSC"/>
+                    <navigationItem key="navigationItem" title="Reservations" id="vdA-p7-OSC"/>
                     <connections>
                         <outlet property="cancelButton" destination="PtG-2k-uzm" id="D6B-k7-otx"/>
                         <outlet property="dispensaryLabel" destination="dwa-lQ-G4E" id="oaU-Zt-vg5"/>
@@ -829,7 +829,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="AUTHENTICATED" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AMI-5w-QeA">
                                 <rect key="frame" x="20" y="20" width="136" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -864,7 +864,7 @@
         <scene sceneID="VfY-Ib-UCZ">
             <objects>
                 <navigationController title="Map Nav" automaticallyAdjustsScrollViewInsets="NO" id="drc-57-mg3" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" selectedImage="Coffeemaker" systemItem="more" id="csb-PF-9T6"/>
+                    <tabBarItem key="tabBarItem" title="Dispensaries" image="Coffeemaker_30px" id="csb-PF-9T6"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Beb-Oc-B2P">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -883,11 +883,11 @@
             </objects>
             <point key="canvasLocation" x="3001" y="724"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Reservations-->
         <scene sceneID="hsx-C1-CfI">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ug7-yH-kH9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" selectedImage="Medicinecart" systemItem="favorites" id="KSp-wt-eZ2"/>
+                    <tabBarItem key="tabBarItem" title="Reservations" image="Medicinecart_30px" id="KSp-wt-eZ2"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="SJq-zE-BuN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -902,11 +902,11 @@
             </objects>
             <point key="canvasLocation" x="2137" y="1578"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--User-->
         <scene sceneID="NQo-70-yy4">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Pd5-fX-ZZG" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="featured" id="EIq-oY-tUF"/>
+                    <tabBarItem key="tabBarItem" title="User" image="User_26px" id="EIq-oY-tUF"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="nBR-yg-mAF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1068,8 +1068,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Coffeemaker" width="60" height="60"/>
-        <image name="Medicinecart" width="60" height="60"/>
+        <image name="Coffeemaker_30px" width="30" height="30"/>
+        <image name="Medicinecart_30px" width="30" height="30"/>
+        <image name="User_26px" width="26" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="TeE-2M-miT"/>
