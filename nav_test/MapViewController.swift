@@ -21,11 +21,13 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.mapView = GMSMapView()
-        print("setting GMSMapViewDelegate")
         self.mapView!.delegate = self
+        
         mapView!.myLocationEnabled = true
         mapView!.settings.myLocationButton = true
+        mapView!.padding = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 5)
         
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()

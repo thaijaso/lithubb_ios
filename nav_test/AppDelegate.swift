@@ -22,10 +22,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: false)
         
-        UIView.appearance().tintColor = UIColor(red: 0, green: 0.8, blue: 0.2, alpha: 1.0)
+        //UIView.appearance().tintColor = UIColor(red: 0, green: 0.8, blue: 0.2, alpha: 1.0)
         UINavigationBar.appearance().barTintColor = UIColor(red: 0, green: 0.8, blue: 0.2, alpha: 1.0)
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        
+        UISegmentedControl.appearance().tintColor = UIColor(red: 0, green: 0.8, blue: 0.2, alpha: 1.0)
+        
+        let tabBarController = self.window?.rootViewController as! UITabBarController
+        UITabBar.appearance().tintColor = UIColor.grayColor()
+        UITabBar.appearance().selectedImageTintColor = UIColor(red: 0, green: 0.8, blue: 0.2, alpha: 1.0)
+        
         return true
     }
 
