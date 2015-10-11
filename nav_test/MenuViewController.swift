@@ -14,31 +14,41 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     var menu = [Menu]()
     var menuFiltered = [Menu]()
-    var myMarker : GMSMarker?
-    var dispensary : Dispensary?
+    var didPressFilterButton: Bool = false
+    var myMarker: GMSMarker?
+    var dispensary: Dispensary?
     
     @IBOutlet weak var productTableView: UITableView!
     @IBOutlet weak var dispensaryName: UINavigationItem!
     @IBOutlet weak var indicaButton: UIButton!
     @IBOutlet weak var hybridButton: UIButton!
     @IBOutlet weak var sativaButton: UIButton!
-    @IBOutlet weak var otherButton: UIButton!
     @IBOutlet weak var edibleButton: UIButton!
+    @IBOutlet weak var otherButton: UIButton!
+    
     
     
     @IBAction func filterButtonPressed(sender: UIButton) {
+        didPressFilterButton = true
         menuFiltered = [Menu]()
         if sender.tag == 1 {
+            //print(NSThread.isMainThread() ? "Main Thread" : "Not on Main Thread")
+            indicaButton.setBackgroundImage(UIImage(named: "Indica"), forState: UIControlState.Normal)
             filter("Indica")
-        } else if sender.tag == 2{
+        } else if sender.tag == 2 {
+            hybridButton.setBackgroundImage(UIImage(named: "Hybrid"), forState: UIControlState.Normal)
             filter("Hybrid")
-        } else if sender.tag == 3{
+        } else if sender.tag == 3 {
+            sativaButton.setBackgroundImage(UIImage(named: "Sativa"), forState: UIControlState.Normal)
             filter("Sativa")
-        } else if sender.tag == 4{
+        } else if sender.tag == 4 {
+            edibleButton.setBackgroundImage(UIImage(named: "Edible"), forState: UIControlState.Normal)
             filter("Edibles")
         } else if sender.tag == 5 {
+            otherButton.setBackgroundImage(UIImage(named: "Blunt"), forState: UIControlState.Normal)
             filter("Other")
         }
+        print(NSThread.isMainThread() ? "Main Thread" : "Not on Main Thread")
         productTableView.reloadData()
     }
     
@@ -48,7 +58,6 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.productTableView.dataSource = self
         self.productTableView.delegate = self
         getMenu()
-        setImages()
         productTableView.reloadData()
     }
     
@@ -59,8 +68,13 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if menuFiltered.count == 0 {
-            print("drawing the table, the count of menu is", menu.count)
+//        if menuFiltered.count == 0 {
+//            print("drawing the table, the count of menu is", menu.count)
+//            return menu.count
+//        } else {
+//            return menuFiltered.count
+//        }
+        if didPressFilterButton == false {
             return menu.count
         } else {
             return menuFiltered.count
@@ -68,12 +82,19 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+//        let cell = productTableView.dequeueReusableCellWithIdentifier("StrainCell") as? StrainCell
+//        print("after cell\(cell)")
+//        if menuFiltered.count != 0 {
+//            cell!.nameLabel?.text = menuFiltered[indexPath.row].strainName as? String
+//        } else {
+//            cell!.nameLabel?.text = menu[indexPath.row].strainName as? String
+//        }
+//        return cell!
         let cell = productTableView.dequeueReusableCellWithIdentifier("StrainCell") as? StrainCell
-        print("after cell\(cell)")
-        if menuFiltered.count != 0 {
-            cell!.nameLabel?.text = menuFiltered[indexPath.row].strainName as? String
+        if didPressFilterButton == false {
+            cell!.nameLabel?.text = menu[indexPath.row].strainName
         } else {
-            cell!.nameLabel?.text = menu[indexPath.row].strainName as? String
+            cell!.nameLabel?.text = menuFiltered[indexPath.row].strainName
         }
         return cell!
     }
@@ -91,7 +112,8 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
-    func filter(filter: String){
+    func filter(filter: String) {
+        print(filter)
         for product in menu {
             if product.category as! String == filter {
                 menuFiltered.append(product)
@@ -158,29 +180,4 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         //End alamofire
     }
     //end getMenu func
-    
-    func setImages() {
-        // set images and text for buttons
-        edibleButton.setBackgroundImage(UIImage(named: "edibles"), forState: UIControlState.Normal)
-        let ediblesAttributedTitle = NSAttributedString(string: "edibles",
-            attributes: [NSForegroundColorAttributeName : UIColor.whiteColor(), NSFontAttributeName : UIFont.systemFontOfSize(23.0)])
-        edibleButton.setAttributedTitle(ediblesAttributedTitle, forState: .Normal)
-        indicaButton.setBackgroundImage(UIImage(named: "indica"), forState: .Normal)
-        let indicaAttributedTitle = NSAttributedString(string: "indica",
-            attributes: [NSForegroundColorAttributeName : UIColor.whiteColor(), NSFontAttributeName : UIFont.systemFontOfSize(23.0)])
-        indicaButton.setAttributedTitle(indicaAttributedTitle, forState: .Normal)
-        sativaButton.setBackgroundImage(UIImage(named: "sativa"), forState: .Normal)
-        let sativaAttributedTitle = NSAttributedString(string: "sativa",
-            attributes: [NSForegroundColorAttributeName : UIColor.whiteColor(), NSFontAttributeName : UIFont.systemFontOfSize(23.0)])
-        sativaButton.setAttributedTitle(sativaAttributedTitle, forState: .Normal)
-        hybridButton.setBackgroundImage(UIImage(named: "hybrid"), forState: .Normal)
-        let hybridAttributedTitle = NSAttributedString(string: "hybrid",
-            attributes: [NSForegroundColorAttributeName : UIColor.whiteColor(), NSFontAttributeName : UIFont.systemFontOfSize(23.0)])
-        hybridButton.setAttributedTitle(hybridAttributedTitle, forState: .Normal)
-        otherButton.setBackgroundImage(UIImage(named: "other"), forState: .Normal)
-        let otherAttributedTitle = NSAttributedString(string: "other",
-            attributes: [NSForegroundColorAttributeName : UIColor.whiteColor(), NSFontAttributeName : UIFont.systemFontOfSize(23.0)])
-        otherButton.setAttributedTitle(otherAttributedTitle, forState: .Normal)
-    }
-    
 }

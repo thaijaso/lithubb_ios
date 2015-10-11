@@ -367,88 +367,95 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="507"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="snw-BM-Mni">
-                                <rect key="frame" x="0.0" y="494" width="300" height="57"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="snw-BM-Mni">
+                                <rect key="frame" x="0.0" y="450" width="300" height="57"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="57" id="cko-7e-WCQ"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Empty"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ml4-ef-whg">
-                                <rect key="frame" x="300" y="494" width="300" height="57"/>
-                                <color key="backgroundColor" red="0.35155268200000001" green="0.84235716540000005" blue="0.62029162120000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ml4-ef-whg">
+                                <rect key="frame" x="300" y="450" width="300" height="57"/>
+                                <color key="backgroundColor" red="0.0" green="0.80000000000000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="57" id="SuC-6M-BT1"/>
                                 </constraints>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="Reserve">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W5L-7T-2u9">
-                                <rect key="frame" x="482" y="64" width="118" height="86"/>
-                                <color key="backgroundColor" red="1" green="1" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W5L-7T-2u9">
+                                <rect key="frame" x="482" y="0.0" width="118" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="118" id="8Or-ln-qqC"/>
                                 </constraints>
-                                <state key="normal" title="Indica"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Indica" backgroundImage="IndicaDark">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="filterButtonPressed:" destination="FuC-7B-6P0" eventType="touchUpInside" id="8DC-9h-LWx"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1gA-q4-08F">
-                                <rect key="frame" x="482" y="150" width="118" height="86"/>
-                                <color key="backgroundColor" red="0.35155268200000001" green="0.84235716540000005" blue="0.62029162120000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1gA-q4-08F">
+                                <rect key="frame" x="482" y="90" width="118" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="118" id="4yO-Qa-Fup"/>
                                 </constraints>
-                                <state key="normal" title="Hybrid">
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Hybrid" backgroundImage="HybridDark">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="filterButtonPressed:" destination="FuC-7B-6P0" eventType="touchUpInside" id="7En-Jk-fUc"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="3" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bLY-DA-dNE">
-                                <rect key="frame" x="482" y="236" width="118" height="86"/>
-                                <color key="backgroundColor" red="1" green="1" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bLY-DA-dNE">
+                                <rect key="frame" x="482" y="180" width="118" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="118" id="eBh-Ly-fwb"/>
                                 </constraints>
-                                <state key="normal" title="Sativa"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Sativa" backgroundImage="SativaDark">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="filterButtonPressed:" destination="FuC-7B-6P0" eventType="touchUpInside" id="uoA-OZ-rwr"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="4" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0qI-B3-ado">
-                                <rect key="frame" x="482" y="322" width="118" height="86"/>
-                                <color key="backgroundColor" red="0.35155268200000001" green="0.84235716540000005" blue="0.62029162120000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Other">
+                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0qI-B3-ado">
+                                <rect key="frame" x="482" y="270" width="118" height="90"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Edibles" backgroundImage="EdibleDark">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="filterButtonPressed:" destination="FuC-7B-6P0" eventType="touchUpInside" id="CTc-e6-n1j"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="5" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aAB-GX-A2v">
-                                <rect key="frame" x="482" y="408" width="118" height="86"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                                <state key="normal" title="Edible"/>
+                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aAB-GX-A2v">
+                                <rect key="frame" x="482" y="360" width="118" height="90"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Other" backgroundImage="BluntDark">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="filterButtonPressed:" destination="FuC-7B-6P0" eventType="touchUpInside" id="TnI-HO-OaV"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="P6v-4j-N3H">
-                                <rect key="frame" x="0.0" y="64" width="482" height="430"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="P6v-4j-N3H">
+                                <rect key="frame" x="0.0" y="0.0" width="482" height="450"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StrainCell" id="PoV-5E-Pjf" customClass="StrainCell" customModule="nav_test" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="482" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StrainCell" rowHeight="60" id="PoV-5E-Pjf" customClass="StrainCell" customModule="nav_test" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="482" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PoV-5E-Pjf" id="YPa-Ok-aWR">
-                                            <rect key="frame" x="0.0" y="0.0" width="482" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="449" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jTe-FZ-bn8">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jTe-FZ-bn8">
                                                     <rect key="frame" x="8" y="11" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -503,10 +510,10 @@
                     <navigationItem key="navigationItem" title="Dispensary Name" id="jS2-aF-WzG"/>
                     <connections>
                         <outlet property="dispensaryName" destination="jS2-aF-WzG" id="doN-xL-UcL"/>
-                        <outlet property="edibleButton" destination="aAB-GX-A2v" id="lCf-Xs-Quy"/>
+                        <outlet property="edibleButton" destination="0qI-B3-ado" id="55V-Zz-7hR"/>
                         <outlet property="hybridButton" destination="1gA-q4-08F" id="clV-Bh-YPV"/>
                         <outlet property="indicaButton" destination="W5L-7T-2u9" id="b0n-Rd-Okt"/>
-                        <outlet property="otherButton" destination="0qI-B3-ado" id="1jn-eT-DRl"/>
+                        <outlet property="otherButton" destination="aAB-GX-A2v" id="97I-fs-6Zu"/>
                         <outlet property="productTableView" destination="P6v-4j-N3H" id="W9x-T5-k8y"/>
                         <outlet property="sativaButton" destination="bLY-DA-dNE" id="QcU-Nj-yCc"/>
                         <segue destination="4FZ-dM-ssn" kind="show" identifier="ShowProduct" id="Mh3-k9-PKp"/>
@@ -514,7 +521,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3s0-Wv-wwh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5302" y="724"/>
+            <point key="canvasLocation" x="5302" y="723.5"/>
         </scene>
         <!--Product Name-->
         <scene sceneID="MNx-p8-Tcc">
@@ -1065,8 +1072,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="BluntDark" width="500" height="358"/>
         <image name="Coffeemaker_30px" width="30" height="30"/>
+        <image name="EdibleDark" width="586" height="322"/>
+        <image name="HybridDark" width="500" height="375"/>
+        <image name="IndicaDark" width="500" height="313"/>
         <image name="Medicinecart_30px" width="30" height="30"/>
+        <image name="SativaDark" width="500" height="313"/>
         <image name="UserSelected_26px" width="26" height="26"/>
         <image name="User_26px" width="26" height="26"/>
     </resources>
