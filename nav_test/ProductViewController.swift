@@ -18,14 +18,15 @@ class ProductViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     
     @IBOutlet weak var productName: UINavigationItem!
     @IBOutlet weak var productImage: UIImageView!
-    @IBOutlet weak var productDescription: UITextView!
-    @IBOutlet weak var indicaPercentage: UILabel!
-    @IBOutlet weak var sativaPercentage: UILabel!
-    @IBOutlet weak var thcPercentage: UILabel!
-    @IBOutlet weak var growDifficulty: UILabel!
+    //@IBOutlet weak var productDescription: UITextView!
+    //@IBOutlet weak var indicaPercentage: UILabel!
+    //@IBOutlet weak var sativaPercentage: UILabel!
+    //@IBOutlet weak var thcPercentage: UILabel!
+    //@IBOutlet weak var growDifficulty: UILabel!
     @IBOutlet weak var amountSelected: UIPickerView!
     
     @IBAction func removeButtonPressed(sender: UIButton) {
+    
     }
     
     //get current user
@@ -127,8 +128,9 @@ class ProductViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         self.amountSelected.dataSource = self
         
         productName.title = menuItem.strainName
-        productDescription.text = menuItem.description
-        growDifficulty.text = menuItem.growDifficulty
+        self.amountSelected.tintColor = UIColor.whiteColor()
+        //productDescription.text = menuItem.description
+        //growDifficulty.text = menuItem.growDifficulty
         let priceGram = "Price per gram: $" + String(menuItem.priceGram)
         let priceEigth = "Price per eigth: $" + String(menuItem.priceEigth)
         let priceQuarter = "Price per quarter: $" + String(menuItem.priceQuarter)
@@ -139,14 +141,14 @@ class ProductViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         self.amountSelectedData.append(priceQuarter)
         self.amountSelectedData.append(priceHalf)
         self.amountSelectedData.append(priceOz)
-        print(menuItem.fullsize_img1)
+        //print(menuItem.fullsize_img1)
         
-        if let url = NSURL(string: self.menuItem.fullsize_img1! ) {
-            if let data = NSData(contentsOfURL: url){
-                self.productImage.contentMode = UIViewContentMode.ScaleAspectFit
-                self.productImage.image = UIImage(data: data)
-            }
-        }
+//        if let url = NSURL(string: self.menuItem.fullsize_img1! ) {
+//            if let data = NSData(contentsOfURL: url){
+//                self.productImage.contentMode = UIViewContentMode.ScaleAspectFit
+//                self.productImage.image = UIImage(data: data)
+//            }
+//        }
     }
     
     
@@ -168,7 +170,6 @@ class ProductViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return amountSelectedData[row]
     }
-    
     
 //    modularize this later DRY :)
     

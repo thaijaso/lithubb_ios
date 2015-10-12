@@ -14,7 +14,10 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     var menu = [Menu]()
     var menuFiltered = [Menu]()
+    
     var didPressFilterButton: Bool = false
+    var previousButtonTag: Int?
+    
     var myMarker: GMSMarker?
     var dispensary: Dispensary?
     
@@ -29,14 +32,33 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
     @IBAction func filterButtonPressed(sender: UIButton) {
+        if previousButtonTag == 1 {
+            indicaButton.setBackgroundImage(UIImage(named: "IndicaDark"), forState: UIControlState.Normal)
+        }
+        if previousButtonTag == 2 {
+            hybridButton.setBackgroundImage(UIImage(named: "HybridDark"), forState: UIControlState.Normal)
+        }
+        if previousButtonTag == 3 {
+            sativaButton.setBackgroundImage(UIImage(named: "SativaDark"), forState: UIControlState.Normal)
+        }
+        if previousButtonTag == 4 {
+            edibleButton.setBackgroundImage(UIImage(named: "EdibleDark"), forState: UIControlState.Normal)
+        }
+        if previousButtonTag == 5 {
+            otherButton.setBackgroundImage(UIImage(named: "BluntDark"), forState: UIControlState.Normal)
+        }
         didPressFilterButton = true
         menuFiltered = [Menu]()
         if sender.tag == 1 {
             //print(NSThread.isMainThread() ? "Main Thread" : "Not on Main Thread")
             indicaButton.setBackgroundImage(UIImage(named: "Indica"), forState: UIControlState.Normal)
+            //indicaButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+            //hybridButton.setBackgroundImage(UIImage(named: "HybridDark"), forState: UIControlState.Normal)
             filter("Indica")
+            
         } else if sender.tag == 2 {
             hybridButton.setBackgroundImage(UIImage(named: "Hybrid"), forState: UIControlState.Normal)
+            //sender.titleLabel?.textColor = UIColor.blackColor()
             filter("Hybrid")
         } else if sender.tag == 3 {
             sativaButton.setBackgroundImage(UIImage(named: "Sativa"), forState: UIControlState.Normal)
@@ -48,7 +70,8 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             otherButton.setBackgroundImage(UIImage(named: "Blunt"), forState: UIControlState.Normal)
             filter("Other")
         }
-        print(NSThread.isMainThread() ? "Main Thread" : "Not on Main Thread")
+        previousButtonTag = sender.tag
+        //print(NSThread.isMainThread() ? "Main Thread" : "Not on Main Thread")
         productTableView.reloadData()
     }
     
