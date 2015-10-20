@@ -11,9 +11,10 @@ import Alamofire
 
 class SignInViewController: UIViewController, UITextFieldDelegate {
     
+    var userID: Int?
+    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passTextField: UITextField!
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +47,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         if let isValidLogin = validateLogin(emailTextField.text!, password: passTextField.text!) {
             self.presentViewController(isValidLogin, animated: true, completion: nil)
         } else {
-            print("I am here!!!")
+            //print("I am here!!!")
             var userData = ["email": emailTextField.text!, "password": passTextField.text!]
             //Alamofire request if the error is nil
             let string = "http://lithubb.herokuapp.com/loginUser"
@@ -54,10 +55,13 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
             Alamofire.request(.POST, string, parameters: userData, encoding: .JSON)
                 .responseJSON { request, response, result in switch result {
                     case .Success(let data):
-                        print("this is the users data", data)
+                        //print("this is the users data", data)
                         let userData = JSON(data)
                         let integerToCheckUser = Int(String(userData[0]["id"]))
                         if integerToCheckUser > -1 {
+                            self.userID = integerToCheckUser
+                            mainInstance.userID = integerToCheckUser
+                            print(mainInstance.userID)
                             self.performSegueWithIdentifier("UserAuthenticated", sender: sender)
                         } else {
                             print("This was the error response", response)

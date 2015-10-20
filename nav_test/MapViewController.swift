@@ -18,6 +18,9 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
     var currentLocation: CLLocation?
     var locationArray = [CLLocation]()
     var mapView : GMSMapView?
+    var logo : UIImage?
+    var requestImage = true;
+    var selected : GMSMarker?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,9 +83,30 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         infoWindow.dispensaryAddress.text = dispensaryForMarker.address
         //infoWindow.dispensaryNumber.text = dispensaryForMarker.phone
         
-        let url = NSURL(string: dispensaryForMarker.logo)
-        let data = NSData(contentsOfURL: url!)
-        infoWindow.dispensaryLogo.image = UIImage(data: data!)
+        
+        print(NSThread.isMainThread() ? "Main Thread" : "Not on main thread")
+        if self.selected != self.mapView!.selectedMarker {
+            self.selected = self.mapView!.selectedMarker
+            requestImage = true;
+            logo = nil;
+        }
+        if requestImage == true {
+            dispatch_async(dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0), {() -> Void in
+                print("attempting to move of main queue")
+                let url = NSURL(string: dispensaryForMarker.logo)
+                let data = NSData(contentsOfURL: url!)
+                self.logo = UIImage(data: data!);
+    //            infoWindow.dispensaryLogo.image = UIImage(data: data!)
+                self.requestImage = false;
+                var temp = self.mapView!.selectedMarker
+                self.mapView!.selectedMarker = nil
+                self.mapView!.selectedMarker = temp
+                
+            })
+        }
+        infoWindow.dispensaryLogo.image = logo;
+        
+        
         
         let distance = dispensaryForMarker.distance!
         let distanceRounded = Double(round(10 * distance) / 10)
