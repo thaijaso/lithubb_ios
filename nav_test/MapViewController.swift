@@ -136,7 +136,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
                     print("data is not nil")
                     //case .Success(let data):
                         let arrayOfDispensaries = JSON(response.result.value!)
-                    print("this is the object returned", response);
+                        //print("this is the object returned", response);
                         //print(arrayOfDispensaries)
                         for var i = 0; i < arrayOfDispensaries.count; ++i {
                             let dispensaryID = arrayOfDispensaries[i]["id"].int

@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		040363161BAA092D00740C3A /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040363151BAA092D00740C3A /* MenuViewController.swift */; };
 		040363181BAA0A1B00740C3A /* StrainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040363171BAA0A1B00740C3A /* StrainCell.swift */; };
-		04061F5B1BBCAE7D0007FAFA /* CustomInfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04061F5A1BBCAE7D0007FAFA /* CustomInfoWindow.xib */; settings = {ASSET_TAGS = (); }; };
+		04061F5B1BBCAE7D0007FAFA /* CustomInfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04061F5A1BBCAE7D0007FAFA /* CustomInfoWindow.xib */; };
 		04276F971BAB67C400B605FD /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04276F961BAB67C400B605FD /* Menu.swift */; };
 		04276F991BABD00900B605FD /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04276F981BABD00900B605FD /* ProductViewController.swift */; };
 		042C2D621BA78E7800C85862 /* Dispensary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042C2D611BA78E7800C85862 /* Dispensary.swift */; };
@@ -18,21 +18,21 @@
 		0455E2A11BA6CC3B00061792 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0455E29F1BA6CC3B00061792 /* LaunchScreen.storyboard */; };
 		0455E2AC1BA6CC3C00061792 /* nav_testTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0455E2AB1BA6CC3C00061792 /* nav_testTests.swift */; };
 		0455E2B71BA6CC3C00061792 /* nav_testUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0455E2B61BA6CC3C00061792 /* nav_testUITests.swift */; };
-		046B9C311BD4585A009DDB1B /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B9C301BD4585A009DDB1B /* Global.swift */; settings = {ASSET_TAGS = (); }; };
-		046B9C331BD842EA009DDB1B /* Reservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B9C321BD842E9009DDB1B /* Reservation.swift */; settings = {ASSET_TAGS = (); }; };
-		046FBFCB1BBCBA420072AB93 /* CustomInfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046FBFCA1BBCBA420072AB93 /* CustomInfoWindow.swift */; settings = {ASSET_TAGS = (); }; };
-		047690141BAC08A9001F749E /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047690131BAC08A9001F749E /* SwiftyJSON.swift */; settings = {ASSET_TAGS = (); }; };
-		047690191BAC094D001F749E /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047690151BAC094D001F749E /* OrderCell.swift */; settings = {ASSET_TAGS = (); }; };
-		0476901A1BAC094D001F749E /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047690161BAC094D001F749E /* OrdersViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		0476901B1BAC094D001F749E /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047690171BAC094D001F749E /* RegistrationViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		0476901C1BAC094D001F749E /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047690181BAC094D001F749E /* SignInViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		047A21A01BDB3FEE002714FA /* CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047A219F1BDB3FEE002714FA /* CartItem.swift */; settings = {ASSET_TAGS = (); }; };
+		046B9C311BD4585A009DDB1B /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B9C301BD4585A009DDB1B /* Global.swift */; };
+		046B9C331BD842EA009DDB1B /* Reservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B9C321BD842E9009DDB1B /* Reservation.swift */; };
+		046FBFCB1BBCBA420072AB93 /* CustomInfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046FBFCA1BBCBA420072AB93 /* CustomInfoWindow.swift */; };
+		047690141BAC08A9001F749E /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047690131BAC08A9001F749E /* SwiftyJSON.swift */; };
+		047690191BAC094D001F749E /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047690151BAC094D001F749E /* OrderCell.swift */; };
+		0476901A1BAC094D001F749E /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047690161BAC094D001F749E /* OrdersViewController.swift */; };
+		0476901B1BAC094D001F749E /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047690171BAC094D001F749E /* RegistrationViewController.swift */; };
+		0476901C1BAC094D001F749E /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047690181BAC094D001F749E /* SignInViewController.swift */; };
+		047A21A01BDB3FEE002714FA /* CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047A219F1BDB3FEE002714FA /* CartItem.swift */; };
 		04A60EDE1BA73F9C0068715E /* DispensariesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A60EDD1BA73F9C0068715E /* DispensariesListViewController.swift */; };
-		04E42AF41BABEF22007C789E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E42AF31BABEF22007C789E /* MapViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		04FAEF471BC370C7005F7B1B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04FAEF461BC370C7005F7B1B /* Assets.xcassets */; settings = {ASSET_TAGS = (); }; };
-		2ACCAC2A1BC371970057618A /* KeychainSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACCAC291BC371970057618A /* KeychainSwift.swift */; settings = {ASSET_TAGS = (); }; };
-		2AF6AAD71BBA322A007183E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AF6AAD51BBA322A007183E1 /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
-		2AF6AAD91BBA4048007183E1 /* DispensariesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF6AAD81BBA4048007183E1 /* DispensariesViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		04E42AF41BABEF22007C789E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E42AF31BABEF22007C789E /* MapViewController.swift */; };
+		04FAEF471BC370C7005F7B1B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04FAEF461BC370C7005F7B1B /* Assets.xcassets */; };
+		2ACCAC2A1BC371970057618A /* KeychainSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACCAC291BC371970057618A /* KeychainSwift.swift */; };
+		2AF6AAD71BBA322A007183E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AF6AAD51BBA322A007183E1 /* Main.storyboard */; };
+		2AF6AAD91BBA4048007183E1 /* DispensariesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF6AAD81BBA4048007183E1 /* DispensariesViewController.swift */; };
 		8204D48BE7EB168611952F5B /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49630389B6061F45C815E714 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -551,6 +551,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0340E69312202D1ABDFF8D28 /* Pods.debug.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -606,6 +608,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FF23F0E4AF592D6F5CC5A3B7 /* Pods.release.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

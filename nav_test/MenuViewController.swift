@@ -16,7 +16,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var menuFiltered = [Menu]()
     
     var didPressFilterButton: Bool = false
-    var previousButtonTag: Int?
+    var previousButtonTag = 5
     
     var myMarker: GMSMarker?
     var dispensary: Dispensary?
@@ -48,6 +48,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             edibleButton.setBackgroundImage(UIImage(named: "EdibleDark"), forState: UIControlState.Normal)
         }
         if previousButtonTag == 5 {
+            
             allButton.setBackgroundImage(UIImage(named: "BluntDark"), forState: UIControlState.Normal)
         }
         didPressFilterButton = true
@@ -70,8 +71,9 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             edibleButton.setBackgroundImage(UIImage(named: "Edible"), forState: UIControlState.Normal)
             filter("Edibles")
         } else if sender.tag == 5 {
+            print("sender tag 5")
             allButton.setBackgroundImage(UIImage(named: "Blunt"), forState: UIControlState.Normal)
-            filter("Other")
+            didPressFilterButton = false
         }
         previousButtonTag = sender.tag
         //print(NSThread.isMainThread() ? "Main Thread" : "Not on Main Thread")
