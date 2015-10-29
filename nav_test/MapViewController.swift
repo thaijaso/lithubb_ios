@@ -128,13 +128,15 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
     func drawMarkersForDispensariesNear(latitude: Double, longitude: Double) {
         print(latitude)
         print(longitude)
-        let string = "http://lithubb.herokuapp.com/dispensaries?lat=\(latitude)&lng=\(longitude)"
+        let string = "http://getlithub.com/dispensaries?lat=\(latitude)&lng=\(longitude)"
         //print(string)
         Alamofire.request(.GET, string)
-            .responseJSON { request, response, result in
-                switch result {
-                    case .Success(let data):
-                        let arrayOfDispensaries = JSON(data)
+            .responseJSON { response in
+                if response.data != nil {
+                    print("data is not nil")
+                    //case .Success(let data):
+                        let arrayOfDispensaries = JSON(response.result.value!)
+                    print("this is the object returned", response);
                         //print(arrayOfDispensaries)
                         for var i = 0; i < arrayOfDispensaries.count; ++i {
                             let dispensaryID = arrayOfDispensaries[i]["id"].int
@@ -168,8 +170,10 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
                             
                             
                         }
-                    case .Failure(_, let error):
-                        print("Request failed with error: \(error)")
+                        print(self.dispensaries.count)
+                    //case .Failure(_, let error):
+                } else {
+                    print("Request failed with error:")
                     
                 }
             }

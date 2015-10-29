@@ -23,11 +23,14 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var productTableView: UITableView!
     @IBOutlet weak var dispensaryName: UINavigationItem!
+    @IBOutlet weak var allButton: UIButton!
     @IBOutlet weak var indicaButton: UIButton!
     @IBOutlet weak var hybridButton: UIButton!
     @IBOutlet weak var sativaButton: UIButton!
     @IBOutlet weak var edibleButton: UIButton!
-    @IBOutlet weak var otherButton: UIButton!
+    
+    
+    
     
     
     
@@ -45,7 +48,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             edibleButton.setBackgroundImage(UIImage(named: "EdibleDark"), forState: UIControlState.Normal)
         }
         if previousButtonTag == 5 {
-            otherButton.setBackgroundImage(UIImage(named: "BluntDark"), forState: UIControlState.Normal)
+            allButton.setBackgroundImage(UIImage(named: "BluntDark"), forState: UIControlState.Normal)
         }
         didPressFilterButton = true
         menuFiltered = [Menu]()
@@ -67,7 +70,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             edibleButton.setBackgroundImage(UIImage(named: "Edible"), forState: UIControlState.Normal)
             filter("Edibles")
         } else if sender.tag == 5 {
-            otherButton.setBackgroundImage(UIImage(named: "Blunt"), forState: UIControlState.Normal)
+            allButton.setBackgroundImage(UIImage(named: "Blunt"), forState: UIControlState.Normal)
             filter("Other")
         }
         previousButtonTag = sender.tag
@@ -161,44 +164,44 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         
         //Alamo fire http request for the items disp carries
-        let string = "http://lithubb.herokuapp.com/getMenu/\(dispensaryID!)"
+        let string = "http://getlithub.herokuapp.com/getMenu/\(dispensaryID!)"
         print(string)
         Alamofire.request(.GET, string)
-            .responseJSON { request, response, result in switch result {
+            .responseJSON { response in
             //Runs if success
-            case .Success(let data):
+            if response.data != nil {
                 print("Checked for disp items, success")
-                let arrOfProducts = JSON(data)
-                if arrOfProducts.count != 0 {
-                    for var i = 0; i < arrOfProducts.count; ++i {
-                        let dispensaryName = arrOfProducts[i]["name"].string
-                        let strainID = arrOfProducts[i]["strain_id"].int
-                        let strainName = arrOfProducts[i]["strain_name"].string
-                        let vendorID = arrOfProducts[i]["vendor_id"].int
-                        let priceGram = arrOfProducts[i]["price_gram"].double
-                        let priceEigth = arrOfProducts[i]["price_eigth"].double
-                        let priceQuarter = arrOfProducts[i]["price_quarter"].double
-                        let priceHalf = arrOfProducts[i]["price_half"].double
-                        let priceOz = arrOfProducts[i]["price_oz"].double
-                        let category = arrOfProducts[i]["category"].string
-                        let symbol = arrOfProducts[i]["symbol"].string
-                        let description = arrOfProducts[i]["description"].string
-                        let fullImage = arrOfProducts[i]["fullsize_img1"].string
-                        let dispensaryMenu = Menu(dispensaryName: dispensaryName!, strainID: strainID!, vendorID: vendorID!, priceGram: priceGram!, priceEigth: priceEigth!, priceQuarter: priceQuarter!, priceHalf: priceHalf!, priceOz: priceOz!, strainName: strainName!, category: category!, description: description!)
-                        dispensaryMenu.fullsize_img1 = fullImage
-                        self.menu.append(dispensaryMenu)
-                    }
-                    self.dispensaryName.title = self.menu[0].dispensaryName
-                    print("printing the menu count", self.menu.count)
-                    self.productTableView.reloadData()
+                let arrOfProducts = JSON(response.result.value!)
+                    if arrOfProducts.count != 0 {
+                        for var i = 0; i < arrOfProducts.count; ++i {
+                            let dispensaryName = arrOfProducts[i]["name"].string
+                            let strainID = arrOfProducts[i]["strain_id"].int
+                            let strainName = arrOfProducts[i]["strain_name"].string
+                            let vendorID = arrOfProducts[i]["vendor_id"].int
+                            let priceGram = arrOfProducts[i]["price_gram"].double
+                            let priceEigth = arrOfProducts[i]["price_eigth"].double
+                            let priceQuarter = arrOfProducts[i]["price_quarter"].double
+                            let priceHalf = arrOfProducts[i]["price_half"].double
+                            let priceOz = arrOfProducts[i]["price_oz"].double
+                            let category = arrOfProducts[i]["category"].string
+                            let symbol = arrOfProducts[i]["symbol"].string
+                            let description = arrOfProducts[i]["description"].string
+                            let fullImage = arrOfProducts[i]["fullsize_img1"].string
+                            let dispensaryMenu = Menu(dispensaryName: dispensaryName!, strainID: strainID!, vendorID: vendorID!, priceGram: priceGram!, priceEigth: priceEigth!, priceQuarter: priceQuarter!, priceHalf: priceHalf!, priceOz: priceOz!, strainName: strainName!, category: category!, description: description!)
+                            dispensaryMenu.fullsize_img1 = fullImage
+                            self.menu.append(dispensaryMenu)
+                        }
+                        self.dispensaryName.title = self.menu[0].dispensaryName
+                        print("printing the menu count", self.menu.count)
+                        self.productTableView.reloadData()
                 } else {
                     print("there were no items")
                 }
 
             //Failure case
-            case .Failure(_, let error):
+            } else {
                 print("There was an error getting your user information")
-                }
+            }
         }
         //End alamofire
     }

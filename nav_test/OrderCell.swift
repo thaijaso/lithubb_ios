@@ -9,9 +9,10 @@
 import UIKit
 
 class OrderCell: UITableViewCell {
-    
+
+    @IBOutlet weak var strainLabel: UILabel!
+    @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     
-    @IBOutlet weak var strainLabel: UILabel!
     
 }

@@ -10,6 +10,7 @@ import Foundation
 
 class Main {
     var userID: Int?
+    var cart = [Reservation]()
     
     init() {
         

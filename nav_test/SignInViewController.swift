@@ -11,6 +11,7 @@ import Alamofire
 
 class SignInViewController: UIViewController, UITextFieldDelegate {
     
+    let keychain = KeychainSwift()
     var userID: Int?
     
     @IBOutlet weak var emailTextField: UITextField!
@@ -18,6 +19,9 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if (keychain.get("email") != nil && keychain.get("password") != nil) {
+            self.performSegueWithIdentifier("UserAuthenticated", sender: UIButton())
+        }
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
         view.addGestureRecognizer(tap)
         // delegate this viewcontroller so we can press return to dismiss keyboard.
@@ -50,13 +54,14 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
             //print("I am here!!!")
             var userData = ["email": emailTextField.text!, "password": passTextField.text!]
             //Alamofire request if the error is nil
-            let string = "http://lithubb.herokuapp.com/loginUser"
+            let string = "http://getlithub.herokuapp.com/loginUser"
             print(userData)
             Alamofire.request(.POST, string, parameters: userData, encoding: .JSON)
-                .responseJSON { request, response, result in switch result {
-                    case .Success(let data):
+                .responseJSON { response in
+                    if response.data != nil {
+//                    case .Success(let data):
                         //print("this is the users data", data)
-                        let userData = JSON(data)
+                        let userData = JSON(response.result.value!)
                         let integerToCheckUser = Int(String(userData[0]["id"]))
                         if integerToCheckUser > -1 {
                             self.userID = integerToCheckUser
@@ -67,16 +72,15 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                             print("This was the error response", response)
                             self.showSimpleAlertWithMessage("Incorrect email or password")
                         }
-                    case .Failure(_, let error):
-                        print("Request failed with error: \(error)")
+                    } else {
+//                    case .Failure(_, let error):
+                        //print("Request failed with error: \(error)")
                         self.showSimpleAlertWithMessage("Incorrect email or password")
+                    }
                 }
-                    
             }
-        }
-        
-        
     }
+    
     
     //    had to use this helper to quick solve a problem presenting an alert upon submission of a valid email and invalid password.
     func showSimpleAlertWithMessage(message: String!) {

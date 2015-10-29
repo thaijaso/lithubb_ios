@@ -27,13 +27,13 @@ class DispensariesListViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func requestDispensaries() {
-        let string = "http://lithubb.herokuapp.com/dispensaries"
+        let string = "http://getlithub.herokuapp.com/dispensaries"
         //print(string)
         Alamofire.request(.GET, string)
-            .responseJSON { request, response, result in
-                switch result {
-                case .Success(let data):
-                    let arrayOfDispensaries = JSON(data)
+            .responseJSON { response in
+                if response.data != nil {
+                //case .Success(let data):
+                    let arrayOfDispensaries = JSON(response.result.value!)
                     for var i = 0; i < arrayOfDispensaries.count; ++i {
                         let dispensaryId = arrayOfDispensaries[i]["id"].int
                         let dispensaryName = arrayOfDispensaries[i]["name"].string
@@ -52,8 +52,9 @@ class DispensariesListViewController: UIViewController, UITableViewDelegate, UIT
                     
                     self.tableView.reloadData()
                     
-                case .Failure(_, let error):
-                    print("Request failed with error: \(error)")
+                } else {
+                //case .Failure(_, let error):
+                    print("Request failed with error")
                     
                 }
         }

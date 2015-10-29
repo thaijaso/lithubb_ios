@@ -17,93 +17,127 @@ class OrdersViewController: UIViewController, UITableViewDataSource, UITableView
     //@IBOutlet weak var orderProgressBar: UIProgressView!
     //@IBOutlet weak var dispensaryLabel: UILabel!
     @IBOutlet weak var cancelButton: UIButton!
-
     @IBOutlet weak var ordersTable: UITableView!
+    @IBOutlet weak var reservationIDLabel: UILabel!
+    @IBOutlet weak var totalItemsLabel: UILabel!
+    @IBOutlet weak var totalPriceLabel: UILabel!
     
-    var orders = Array<String>()
-    var prices = Array<String>()
-    var email = String()
-    var id = String()
+    var cartItems = [Reservation]()
+    var reservations = Array<Reservation>()
+    var totalPrice = 0.00
+    //var prices = Array<String>()
+    //var email = String()
+    //var id = String()
     var orderId = String()
     var userID: Int?
     //    var currentUser = Array<NSDictionary>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //print("orders view")
+        //print("reservations view load")
         ordersTable.dataSource = self
         ordersTable.delegate = self
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
+        
+        //let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
         getCurrentUser()
-        //print("got the current user")
-        getOrder()
-        //print("Got the orders")
-        view.addGestureRecognizer(tap)
+        //getOrder()
+        //print("view did load")
+        //print(reservations.count)
+        //view.addGestureRecognizer(tap)
         
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        if orders.count > 0 {
-            //orderStatusLabel.hidden = false
-            //orderProgressBar.hidden = false
-            //dispensaryLabel.hidden = false
-            cancelButton.hidden = false
-            ordersTable.hidden = false
-        } else {
-            getOrder()
-        }
+        self.cartItems = mainInstance.cart
+        //print(self.cart.count)
+        self.ordersTable.reloadData()
+        //print("view did appear")
+        //getOrder()
+        updateReservationsView()
     }
     
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return orders.count
+        return cartItems.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("OrderCell") as! OrderCell
-        let order = orders[0]
-        let price = prices[0]
-        cell.strainLabel.text = order
-        cell.priceLabel.text = price
+        let cartItem = cartItems[indexPath.row]
+        //print(reservation)
+        //let price = prices[0]
+        cell.strainLabel.text = cartItem.strainName
+        if cartItem.quantityGram != 0 {
+            cell.quantityLabel.text = "\(cartItem.quantityGram) Gram(s)"
+            let gramTotal = cartItem.priceGram * Double(cartItem.quantityGram)
+            self.totalPrice += gramTotal
+            cell.priceLabel.text = "$" + String(format: "%.2f", gramTotal)
+        } else if cartItem.quantityEigth != 0 {
+            cell.quantityLabel.text = "\(cartItem.quantityEigth) Eigth(s)"
+            let eigthTotal = cartItem.priceEigth * Double(cartItem.quantityEigth)
+            //print(eigthTotal)
+            self.totalPrice += eigthTotal
+            //print(self.totalPrice)
+            cell.priceLabel.text = "$" + String(format: "%.2f", eigthTotal)
+        } else if cartItem.quantityQuarter != 0 {
+            cell.quantityLabel.text = "\(cartItem.quantityQuarter) Quarter(s)"
+            let quarterTotal = cartItem.priceQuarter * Double(cartItem.quantityQuarter)
+            cell.priceLabel.text = "$" + String(format: "%.2f", quarterTotal)
+        } else if cartItem.quantityHalf != 0 {
+            cell.quantityLabel.text = "\(cartItem.quantityHalf) Half(s)"
+            let halfTotal = cartItem.priceHalf * Double(cartItem.quantityHalf)
+            cell.priceLabel.text = "$" + String(format: "%.2f", halfTotal)
+        } else if cartItem.quantityOz != 0 {
+            cell.quantityLabel.text = "\(cartItem.quantityOz) Oz(s)"
+            let ozTotal = cartItem.priceOz * Double(cartItem.quantityOz)
+            cell.priceLabel.text = "$" + String(format: "%.2f", ozTotal)
+        }
+        //cell.priceLabel.text = price
         return cell
     }
     
+    func updateReservationsView() {
+        //print("getting reservations count")
+        if cartItems.count > 0 {
+            print("hello")
+            self.totalPrice = 0.00
+            //print(self.totalPrice)
+            let cartItem = cartItems[0]
+            //let reservationID = reservation.id
+            //let vendorName = reservation.vendor
+            //reservationIDLabel.text = "\(vendorName) #\(reservationID)"
+            totalItemsLabel.text = "Total: \(cartItems.count) item(s)"
+            for var i = 0; i < cartItems.count; ++i {
+                if cartItems[i].quantityGram != 0 {
+                    let gramTotal = cartItems[i].priceGram * Double(cartItems[i].quantityGram)
+                    self.totalPrice += gramTotal
+                } else if cartItems[i].quantityEigth != 0 {
+                    let eigthTotal = cartItems[i].priceEigth * Double(cartItems[i].quantityEigth)
+                    self.totalPrice += eigthTotal
+                } else if cartItems[i].quantityQuarter != 0 {
+                    let quarterTotal = cartItems[i].priceQuarter * Double(cartItems[i].quantityQuarter)
+                    self.totalPrice += quarterTotal
+                } else if cartItems[i].quantityHalf != 0 {
+                    let halfTotal = cartItems[i].priceHalf * Double(cartItems[i].quantityHalf)
+                    self.totalPrice += halfTotal
+                } else if cartItems[i].quantityOz != 0 {
+                    let ozTotal = cartItems[i].priceOz * Double(cartItems[i].quantityOz)
+                    self.totalPrice += ozTotal
+                }
+            }
+            totalPriceLabel.text = "$" + String(format: "%.2f", self.totalPrice)
+           
+        }
+    }
+
+    
     func getCurrentUser() {
-        print("getting current user")
         self.userID = mainInstance.userID
-        print(self.userID)
     }
     
-//    func getCurrentUser() {
-//        let string = "http://lithubb.herokuapp.com/currentUser"
-//        Alamofire.request(.GET, string)
-//            .responseJSON { request, response, result in switch result {
-//                    case .Success(let data):
-//                        //print("Checked for user, success", data)
-//                        let user = JSON(data)
-//                        let userEmail = user[0]["email"]
-//                        let userId = user[0]["id"]
-//                        self.email = String(userEmail)
-//                        self.id = String(userId)
-//                    case .Failure(_, let error):
-//                        print("There was an error getting your user information")
-//                }
-//            }
-//        // gets current user email and id
-//        let string: "http://192.168.1.146:7000/currentUser") {
-//            if let data = NSData(contentsOfURL: urlToReq) {
-//                //This JSON function is from SwiftyJason and parses the JSON data.
-//                let user = JSON(data: data)
-//                let userEmail = user["email"]
-//                let userId = user["id"]
-//                email = String(userEmail)
-//                id = String(userId)
-//            }
-//        }
-//    }
-    
     @IBAction func cancelOrder(sender: UIButton) {
-        if let urlToReq = NSURL(string: "http://lithubb.herokuapp.com/cancelOrder"){
+        if let urlToReq = NSURL(string: "http://getlithub.herokuapp.com/cancelOrder"){
             let request: NSMutableURLRequest = NSMutableURLRequest(URL: urlToReq)
             request.HTTPMethod = "POST"
             let bodyData = "id=\(Int(orderId)!)"
@@ -122,95 +156,46 @@ class OrdersViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     
-//    func getOrder() {
-//        //Alamofire getting the orders
-//        let string = "http://lithubb.herokuapp.com/getReservations"
-//        Alamofire.request(.POST, string)
-//            .responseJSON { request, response, result in switch result {
-//            //success case
-//            case .Success(let data):
-//                print("Checked for user, success", data)
-//                let orders = JSON(data)
-//                print("Here are the orders", orders)
-//                if orders.count != 0 {
-//                    self.orderNumberLabel.text = String(orders[0]["status"])
-//                    self.orderId = String(orders[0]["id"])
-//                    //progress bar
-//                    switch String(orders[0]["status"]) {
-//                    case "0":
-//                        self.orderStatusLabel.text = "pending..."
-//                        self.orderProgressBar.progress = 0.1
-//                    case "1":
-//                        self.orderStatusLabel.text = "processing"
-//                        self.orderProgressBar.progress = 0.5
-//                    case "2":
-//                        self.orderStatusLabel.text = "shipped"
-//                        self.orderProgressBar.progress = 1.0
-//                    default:
-//                        self.orderStatusLabel.text = "error"
-//                    }
-//                    //Order Number
-//                    let OrderNumberToPass = String(orders[0]["id"])
-//                    self.orderNumberLabel.text = "Order Number: \(OrderNumberToPass)"
-//                    //Vendor (we need to trip the whitespace. That's weird stuff)
-//                    let vendor = String(orders[0]["vendor"])
-//                    let vendorToPass = vendor.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-//                    self.dispensaryLabel.text = vendorToPass
-//                    //this is for if we later on allow more than one strain. That's why it's in a for loop.
-//                    if self.orders.count == 0 {
-//                        self.orders.append(String(orders[0]["name"]))
-//                        self.ordersTable.reloadData()
-//                    }
-//                    //this price is not ready for more strains
-//                    if self.prices.count == 0 {
-//                        if String(orders[0]["quantity_half"]) == "1" {
-//                            let priceToPass = String(Double(String(orders[0]["price_gram"]))! * Double(14.15))
-//                            self.prices.append("(priceToPass")
-//                            self.ordersTable.reloadData()
-//                        } else if String(orders[0]["quantity_eigth"]) == "1" {
-//                            let priceToPass = String(Double(String(orders[0]["price_gram"]))! * Double(3.54))
-//                            self.prices.append(priceToPass)
-//                            self.ordersTable.reloadData()
-//                        } else if String(orders[0]["quantity_gram"]) == "1" {
-//                            let priceToPass = String(Double(String(orders[0]["price_gram"]))!)
-//                            self.prices.append(priceToPass)
-//                            self.ordersTable.reloadData()
-//                        } else if String(orders[0]["quantity_oz"]) == "1" {
-//                            let priceToPass = String(Double(String(orders[0]["price_gram"]))! * Double(28.29))
-//                            self.prices.append(priceToPass)
-//                            self.ordersTable.reloadData()
-//                        }
-//                    }
-//                } else {
-//                    self.orderStatusLabel.hidden = false
-//                    self.ordersTable.hidden = true
-//                    self.orderProgressBar.hidden = true
-//                    self.cancelButton.hidden = true
-//                    self.orderNumberLabel.hidden = true
-//                    self.dispensaryLabel.hidden = true
-//                    self.orderStatusLabel.text = "You have no orders"
-//                }
-//                
-//            //failure case
-//            case .Failure(_, let error):
-//                print("There was an error getting your order information")
-//            }
-//        }
-//    }
     func getOrder() {
         //print(id)
-        let string = "http://lithubb.herokuapp.com/getReservations"
+        let string = "http://getlithub.herokuapp.com/getReservations"
         let parameters = [
             "id": self.userID!
         ]
         Alamofire.request(.POST, string, parameters: parameters)
-            .responseJSON { request, response, result in
-                switch result {
-                    case .Success(let data):
-                        let orders = JSON(data)
-                        print(orders)
-                    case .Failure(_, let error):
-                        print("Request failed with error: \(error)")
+            .responseJSON { response in
+                if response.data != nil {
+                    //case .Success(let data):
+                        let arrayOfReservations = JSON(response.result.value!)
+                        self.reservations = [Reservation]()
+                        //print(arrayOfReservations)
+                        for var i = 0; i < arrayOfReservations.count; ++i {
+                            let reservationID = arrayOfReservations[i]["id"].int
+                            let status = arrayOfReservations[i]["status"].string
+                            let vendorName = arrayOfReservations[i]["vendor"].string
+                            let strainName = arrayOfReservations[i]["name"].string
+                            let priceGram = arrayOfReservations[i]["price_gram"].double
+                            let priceEigth = arrayOfReservations[i]["price_eigth"].double
+                            let priceQuarter = arrayOfReservations[i]["price_quarter"].double
+                            let priceHalf = arrayOfReservations[i]["price_half"].double
+                            let priceOz = arrayOfReservations[i]["price_oz"].double
+                            let quantityGram = arrayOfReservations[i]["quantity_gram"].int
+                            let quantityEigth = arrayOfReservations[i]["quantity_eigth"].int
+                            let quantityQuarter = arrayOfReservations[i]["quantity_quarter"].int
+                            let quantityHalf = arrayOfReservations[i]["quantity_half"].int
+                            let quantityOz = arrayOfReservations[i]["quantity_oz"].int
+                            let reservation = Reservation(status: status!, vendor: vendorName!, strainName: strainName!,
+                                                          priceGram: priceGram!, priceEigth: priceEigth!, priceQuarter: priceQuarter!, priceHalf: priceHalf!, priceOz: priceOz!,
+                                                          quantityGram: quantityGram!, quantityEigth: quantityEigth!, quantityQuarter: quantityQuarter!, quantityHalf: quantityHalf!, quantityOz: quantityOz!)
+                            reservation.id = reservationID
+                            self.reservations.append(reservation)
+                        }
+                        self.updateReservationsView()
+                        self.ordersTable.reloadData()
+                    
+                } else {
+                //case .Failure(_, let error):
+                    print("Request failed with error:")
                 }
             }
         
